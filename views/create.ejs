@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/header'); %>
+    <body>
+        <%- include('layouts/navbar'); %>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Tạo bài biết</h1>
+                            <span class="subheading">Hãy chia sẻ những kiến thức tới cộng đồng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <form action="/posts/store" method="POST" enctype="multipart/form-data">  <!-- enctype="multipart/form-data" để báo cho trình duyệt biết là form
+                có chứa dữ liệu multimedia.-->
+              <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        
+                        <div class="my-5">
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- * * SB Forms Contact Form * *-->
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- This form is pre-integrated with SB Forms.-->
+                            <!-- To make this form functional, sign up at-->
+                            <!-- https://startbootstrap.com/solution/contact-forms-->
+                            <!-- to get an API token!-->
+                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                <!-- image -->
+                                <div class="form-floating"> <!-- phải khai báo name = image ( thuộc tính trong document ) thì mới lưu được data-->
+                                    <label></label>
+                                    <input type="file" class="form-control" id="image" name="image" >
+                                    <div class="invalid-feedback" data-sb-feedback="image:required">Image is required.</div>
+                                </div>
+                                <!-- title -->
+                                <div class="form-floating">  <!-- phải khai báo name = title ( thuộc tính trong document ) thì mới lưu được data-->
+                                    <input class="form-control" id="title" name="title" type="text" placeholder="Enter your tittle..." data-sb-validations="required" />
+                                    <label for="title">Title</label>
+                                    <div class="invalid-feedback" data-sb-feedback="title:required">title is required.</div>
+                                </div>
+                                 <!-- Content -->
+                                <div class="form-floating"> <!-- phải khai báo name = body ( thuộc tính trong document ) thì mới lưu được data-->
+                                    <textarea class="form-control" id="body" name="body" placeholder="Enter your content here..." style="height: 12rem" data-sb-validations="required"></textarea>
+                                    <label for="body">Content</label>
+                                    <div class="invalid-feedback" data-sb-feedback="body:required">Content is required.</div>
+                                </div>
+                                <br />
+                                <!-- Submit success message-->
+                                <!---->
+                                <!-- This is what your users will see when the form-->
+                                <!-- has successfully submitted-->
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">Form submission successful!</div>
+                                        To activate this form, sign up at
+                                        <br />
+                                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    </div>
+                                </div>
+                                <!-- Submit error message-->
+                                <!---->
+                                <!-- This is what your users will see when there is-->
+                                <!-- an error submitting the form-->
+                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                                <!-- Submit Button-->
+                                <button class="btn btn-primary text-uppercase enable" id="submitButton" type="submit">Create</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </form>
+        </main>
+        <!-- Footer-->
+        <%- include('layouts/footer'); %>
+        <%- include('layouts/scripts'); %>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
