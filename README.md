@@ -4,11 +4,14 @@
 2. Tạo bài viết
 3. Xem bài viết 
 4. Giới thiệu
-
-Bên cạnh đó, project có code các middleware authen,;validation, session
+![alt text](image.png)
+Bên cạnh đó, project có code các middleware authen,validation, session
 Dùng nodemon để start dự án, connect đến MongoDB server
 Database: my_database
 Collection: Import các file data có sẵn vào db
+Đăng nhập:
+ user: datnx 
+ password: 123456
 
 
 #### npm Scripts
