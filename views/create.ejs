@@ -18,66 +18,64 @@
         </header>
         <!-- Main Content-->
         <main class="mb-4">
-            <form action="/posts/store" method="POST" enctype="multipart/form-data">  <!-- enctype="multipart/form-data" để báo cho trình duyệt biết là form
-                có chứa dữ liệu multimedia.-->
-              <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        
-                        <div class="my-5">
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- * * SB Forms Contact Form * *-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- This form is pre-integrated with SB Forms.-->
-                            <!-- To make this form functional, sign up at-->
-                            <!-- https://startbootstrap.com/solution/contact-forms-->
-                            <!-- to get an API token!-->
-                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                <!-- image -->
-                                <div class="form-floating"> <!-- phải khai báo name = image ( thuộc tính trong document ) thì mới lưu được data-->
-                                    <label></label>
-                                    <input type="file" class="form-control" id="image" name="image" >
-                                    <div class="invalid-feedback" data-sb-feedback="image:required">Image is required.</div>
+            <form id="contactForm" enctype="multipart/form-data">  <!-- enctype="multipart/form-data" để báo cho trình duyệt biết là form có chứa dữ liệu multimedia.-->
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="my-5">
+                                <!-- Image -->
+                                <div class="form-floating">
+                                    <label for="image">Image</label>
+                                    <input type="file" class="form-control" id="image" name="image" required>
                                 </div>
-                                <!-- title -->
-                                <div class="form-floating">  <!-- phải khai báo name = title ( thuộc tính trong document ) thì mới lưu được data-->
-                                    <input class="form-control" id="title" name="title" type="text" placeholder="Enter your tittle..." data-sb-validations="required" />
+                                <!-- Title -->
+                                <div class="form-floating">
+                                    <input class="form-control" id="title" name="title" type="text" placeholder="Enter your title..." required />
                                     <label for="title">Title</label>
-                                    <div class="invalid-feedback" data-sb-feedback="title:required">title is required.</div>
                                 </div>
-                                 <!-- Content -->
-                                <div class="form-floating"> <!-- phải khai báo name = body ( thuộc tính trong document ) thì mới lưu được data-->
-                                    <textarea class="form-control" id="body" name="body" placeholder="Enter your content here..." style="height: 12rem" data-sb-validations="required"></textarea>
+                                <!-- Content -->
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="body" name="body" placeholder="Enter your content here..." style="height: 12rem" required></textarea>
                                     <label for="body">Content</label>
-                                    <div class="invalid-feedback" data-sb-feedback="body:required">Content is required.</div>
                                 </div>
                                 <br />
-                                <!-- Submit success message-->
-                                <!---->
-                                <!-- This is what your users will see when the form-->
-                                <!-- has successfully submitted-->
-                                <div class="d-none" id="submitSuccessMessage">
-                                    <div class="text-center mb-3">
-                                        <div class="fw-bolder">Form submission successful!</div>
-                                        To activate this form, sign up at
-                                        <br />
-                                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                    </div>
-                                </div>
-                                <!-- Submit error message-->
-                                <!---->
-                                <!-- This is what your users will see when there is-->
-                                <!-- an error submitting the form-->
-                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                 <!-- Submit Button-->
-                                <button class="btn btn-primary text-uppercase enable" id="submitButton" type="submit">Create</button>
-                            </form>
+                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Create</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-         </form>
+            </form>
         </main>
+        
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', async function (e) {
+                e.preventDefault(); // Ngăn chặn hành vi mặc định của form (reload trang)
+                
+                const formData = new FormData(this); // Lấy dữ liệu từ form
+        
+                try {
+                    const response = await fetch('/posts/store', {
+                        method: 'POST',
+                        body: formData
+                    });
+        
+                    const result = await response.json();
+        
+                    if (result.success) {
+                        // Hiển thị hộp thoại khi gửi thành công
+                        alert('Tạo bài viết thành công, cảm ơn bạn đã đóng góp!');
+                        document.getElementById('contactForm').reset(); // Reset form sau khi gửi
+                    } else {
+                        alert('Có lỗi xảy ra, vui lòng thử lại.');
+                    }
+                } catch (error) {
+                    alert('Có lỗi xảy ra khi tạo bài viết!');
+                    console.error('Error:', error);
+                }
+            });
+        </script>
+
         <!-- Footer-->
         <%- include('layouts/footer'); %>
         <%- include('layouts/scripts'); %>

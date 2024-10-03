@@ -28,6 +28,9 @@ app.use(bodyParser.raw());
 const mongoose = require('mongoose');   
 mongoose.connect('mongodb://localhost/my_database',{} )
 
+
+// const Contact = require('./models/Contact.js')
+
 // import các module,middleware
 const authMiddleware = require('./middleware/authMiddleware')
 const newPostController = require('./controllers/newPost');
@@ -40,7 +43,7 @@ const loginController = require('./controllers/login')
 const loginUserController = require('./controllers/loginUser')
 const redirectIfAuthenticatedMiddleware = require('./middleware/redirectIfAuthenticatedMiddleware')
 const logoutController = require('./controllers/logout')
-
+const storeContactController = require('./controllers/storeContact')
 //khai báo fileupload
 const fileUpload = require('express-fileupload')
 app.use(fileUpload())
@@ -75,7 +78,7 @@ app.get('/about', (req, res) => {
     res.render('about');
 })
 
-app.get('/contact', (req, res) => {
+app.get('/contact/new', (req, res) => {
 //res.sendFile(path.resolve(__dirname,'pages/contact.html'))
 res.render('contact');
 })
@@ -111,6 +114,10 @@ app.get('/auth/login',redirectIfAuthenticatedMiddleware,loginController);
 
 //Store Login
 app.post('/users/login',redirectIfAuthenticatedMiddleware,loginUserController)
+
+app.post('/contact/store',storeContactController)
+// //Store Contact
+// app.post('/contact',storeContactController)
 
 // Not found: Request không thuộc route nào thì sẽ nhảy vào route cuối cùng (notfound)
 app.use((req, res) => res.render('notfound')); 

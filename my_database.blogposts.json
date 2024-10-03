@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "66e2f69c6f8e27a0b38bf47f"
+  },
+  "title": "Tìm hiểu về DevOps",
+  "body": "DevOps là một sự kết hợp của các nguyên lý, thực hành, quy trình và các tool giúp tự động hóa quá trình lập trình và chuyển giao phần mềm. Với DevOps, các công ty có thể “release” các tính năng nhỏ rất nhanh và kết hợp các phản hồi mà họ nhận được một cách nhanh chóng. DevOps là kết hợp của các cụm từ tiếng Anh software development và information technology operations.\r\n\r\nhttps://topdev.vn/blog/devops-la-gi/",
+  "datePosted": {
+    "$date": "2024-09-12T13:42:48.265Z"
+  },
+  "image": "/upload/tim-hieu-devops.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e2f7f16f8e27a0b38bf485"
+  },
+  "title": "devops",
+  "body": "devops",
+  "datePosted": {
+    "$date": "2024-09-12T13:42:48.265Z"
+  },
+  "image": "/upload/960x0.webp",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66feaca208acd5cee1f0c34b"
+  },
+  "title": "Rabiloo trong tôi",
+  "body": "Tôi đã làm việc tại Rabiloo 4 tháng, là 1 nơi bắt đầu quý giá và cho tôi nhiều kinh nghiệm về DevOps.",
+  "datePosted": {
+    "$date": "2024-10-03T14:35:26.523Z"
+  },
+  "image": "/upload/rabilloo.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66fead0c68b963c83072f076"
+  },
+  "title": "Cert Quý giá ",
+  "body": "Đây là cert đầu tiên trên con đường làm DevOps của tôi",
+  "datePosted": {
+    "$date": "2024-10-03T14:40:18.597Z"
+  },
+  "image": "/upload/cert.PNG",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66feada2696c8ab474177954"
+  },
+  "title": "Xin chào",
+  "body": "Tôi là đạt",
+  "datePosted": {
+    "$date": "2024-10-03T14:42:54.660Z"
+  },
+  "image": "/upload/412904671_3799962446952412_2100401680969543860_n.jpg",
+  "__v": 0
+}]

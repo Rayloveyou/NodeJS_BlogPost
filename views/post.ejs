@@ -9,14 +9,9 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="post-heading">
-                            <h1><%= detailPost.title %></h1>
-                            <h2 class="subheading"><%= detailPost.body %></h2>
-                            <span class="meta">
-                                Posted by
-                               <!-- Tác giả + ngày đăng từ db-->
-                                <a href="#!"><%= detailPost.username %></a>
-                                on <%= detailPost.datePosted.toDateString() %>
-                            </span>
+                            <!-- <h1><%= detailPost.title %></h1> -->
+                            <!-- <h2 class="subheading"><%= detailPost.body %></h2> -->
+                           
                         </div>
                     </div>
                 </div>
@@ -27,11 +22,21 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h1><%= detailPost.title %></h1>
                         <%= detailPost.body %>
+                        <!-- Thêm lớp CSS để tạo khoảng cách -->
+                        <div class="post-meta mt-5"> <!-- mt-5 sẽ tạo khoảng cách trên bằng lớp bootstrap -->
+                            <span class="meta">
+                                Posted 
+                                <a href="#!"><%= detailPost.username %></a>
+                                on <%= detailPost.datePosted.toDateString() %>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </article>
+        
         <!-- Footer-->
         <%- include('layouts/footer'); %>
         <%- include('layouts/scripts'); %>

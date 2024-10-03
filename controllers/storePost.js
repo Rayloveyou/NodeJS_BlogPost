@@ -1,10 +1,11 @@
-const BlogPost = require('../models/BlogPost.js')
-const path = require('path')
+const BlogPost = require('../models/BlogPost.js');
+const path = require('path');
+
 module.exports = async (req, res) => {
     try {
         // Kiểm tra nếu có tệp tải lên
         if (!req.files || !req.files.image) {
-            return res.status(400).send('Không có ảnh tải lên.');
+            return res.status(400).json({ success: false, message: 'Không có ảnh tải lên.' });
         }
 
         let image = req.files.image;
@@ -25,12 +26,12 @@ module.exports = async (req, res) => {
             image: `/upload/${image.name}`
         });
 
-        // Chuyển hướng đến trang chính sau khi tạo thành công
-        res.redirect('/');
-        console.log('Post created: ', blogpost);
+        // Trả về phản hồi JSON thành công cho client
+        res.status(200).json({ success: true, message: 'Post saved successfully' });
+        console.log('Post saved: ', blogpost);
     } catch (error) {
         // Xử lý lỗi nếu có
         console.error('Lỗi khi tạo bài viết:', error);
-        res.status(500).send('Có lỗi xảy ra khi lưu bài viết');
+        res.status(500).json({ success: false, message: 'Có lỗi xảy ra khi lưu bài viết' });
     }
-}
+};
